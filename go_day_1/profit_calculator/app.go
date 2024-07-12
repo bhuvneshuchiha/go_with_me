@@ -11,14 +11,19 @@ func main() {
     var expenses float64
     var taxRate float64
 
-    fmt.Print("Enter your revenue: ")
-    fmt.Scan(&revenue)
+    // fmt.Print("Enter your revenue: ")
+    // fmt.Scan(&revenue)
 
-    fmt.Print("Enter the expenses: ")
-    fmt.Scan(&expenses)
 
-    fmt.Print("Enter the tax rate: ")
-    fmt.Scan(&taxRate)
+    // fmt.Print("Enter the expenses: ")
+    // fmt.Scan(&expenses)
+    //
+    // fmt.Print("Enter the tax rate: ")
+    // fmt.Scan(&taxRate)
+
+    inputRevenue(&revenue)
+    inputExpenses(&expenses)
+    inputTaxRate(&taxRate)
 
     earningsBeforeTax, profit, ratio := calculateValues(revenue, expenses, taxRate)
 
@@ -28,6 +33,23 @@ func main() {
 
 }
 
+func inputRevenue(revenue *float64) {
+
+    fmt.Print("Enter the revenue: ")
+    fmt.Scan(revenue)
+}
+
+func inputExpenses(expenses *float64) {
+
+    fmt.Print("Enter the expenses: ")
+    fmt.Scan(expenses)
+}
+
+func inputTaxRate(taxRate *float64) {
+
+    fmt.Print("Enter the tax rate: ")
+    fmt.Scan(taxRate)
+}
 
 func calculateValues(revenue, expenses, taxRate float64) (float64, float64, float64) {
 
