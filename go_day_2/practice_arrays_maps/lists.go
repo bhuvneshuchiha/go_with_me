@@ -1,4 +1,4 @@
-package main
+package lists
 
 import "fmt"
 
@@ -45,7 +45,6 @@ func main() {
     }
 
     fmt.Println(product)
-
 
     newProduct := Product{
         "A third product",
