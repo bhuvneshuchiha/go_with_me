@@ -8,7 +8,6 @@ type CMDManager struct{
 
 func (cmd CMDManager) ReadLines([]string) ([]string, error) {
     fmt.Println("Please enter your prices.Confirm prices with ENTER")
-
     var prices []string
 
     for {
