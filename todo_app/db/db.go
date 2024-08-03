@@ -1,13 +1,17 @@
 package db
 
 import (
-    "github.com/jinzhu/gorm"
+	"log"
+
+	"github.com/jinzhu/gorm"
+	_ "github.com/jinzhu/gorm/dialects/mysql"
 )
 
 var db *gorm.DB
 
 func Connect() {
-    d, err := gorm.Open("mysql","bhuvnesh:Bhuvnesh@123/todo_app/charset=utf8&parseTime=True&loc=Local")
+    //This port should be mysql's port
+    d, err := gorm.Open("mysql","Bhuvnesh:@tcp(localhost:3306)/todo_app?charset=utf8&parseTime=True&loc=Local")
     if err != nil {
         panic(err)
     }
@@ -15,5 +19,10 @@ func Connect() {
 }
 
 func GetDB() *gorm.DB {
+    if db == nil {
+        log.Fatal("Database connection is not initialized")
+    }
     return db
 }
+
+

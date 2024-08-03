@@ -1,14 +1,14 @@
 package views
 
 import (
-    "encoding/json"
-    "fmt"
-    "net/http"
-    "strconv"
+	"encoding/json"
+	"fmt"
+	"net/http"
+	"strconv"
 
-    "github.com/bhuvneshuchiha/todo_app/todo_struct"
-    "github.com/bhuvneshuchiha/todo_app/utils"
-    "github.com/gorilla/mux"
+	"github.com/bhuvneshuchiha/todo_app/todo_struct"
+	"github.com/bhuvneshuchiha/todo_app/utils"
+	"github.com/gorilla/mux"
 )
 
 var NewTodo todo_struct.Todo
@@ -60,6 +60,30 @@ func DeleteTodo(w http.ResponseWriter, r *http.Request){
     w.Write(res)
 }
 
+func UpdateTodo(w http.ResponseWriter, r *http.Request) {
+    var updateTodo =  &todo_struct.Todo{}
+    utils.ParseBody(r, updateTodo)
+    vars := mux.Vars(r)
+    todoId := vars["todoId"]
+    ID, err := strconv.ParseInt(todoId, 0, 0)
+    if err != nil {
+        fmt.Println("error while parsing")
+    }
+
+    todo_obj, db := todo_struct.GetTodoById(ID)
+    if todo_obj.Title != "" {
+       todo_obj.Title = updateTodo.Title
+    }
+    if todo_obj.Content != "" {
+        todo_obj.Content = updateTodo.Content
+    }
+
+    db.Save(&todo_obj)
+    res, _ := json.Marshal(todo_obj)
+    w.Header().Set("Content-Type", "pkglication/json")
+    w.WriteHeader(http.StatusOK)
+    w.Write(res)
+}
 
 
 
