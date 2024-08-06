@@ -13,6 +13,7 @@ import (
 	movefile "github.com/bhuvneshuchiha/term_help/moveFile"
 	processkill "github.com/bhuvneshuchiha/term_help/processKill"
 	"github.com/bhuvneshuchiha/term_help/remove"
+	"github.com/bhuvneshuchiha/term_help/tmuxSession"
 )
 
 func main() {
@@ -62,6 +63,11 @@ func main() {
 	//Command 7 -> Check for PIDs and then kill the processes based on PIDs
 	if input == "7" {
 		processkill.KillProcess()
+	}
+
+	//Command 8 -> Create a tmux session given its name
+	if input == "8" {
+		tmuxSession.CreateTmux()
 	}
 
 }

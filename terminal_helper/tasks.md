@@ -13,3 +13,8 @@
 11- Once copied, add the new installation lines in that theme and delete the older .tmux files.
 12- Add something to write things onto zshell script as well if something requires that.
 
+
+# Update as of 7th August->
+1 - Issue encountered in tmux session creation.Using pky package I was able to
+create a tmux session but when it gets created it starts with some garbage value
+plus the tmux has no cursor but still we can write there, not very UI appealing.
