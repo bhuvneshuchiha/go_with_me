@@ -22,9 +22,10 @@ func CreateTmux() {
 		log.Fatal(err)
 		return
 	}
-
 	cmd := exec.Command("tmux", "new", "-s", seshName)
 
+	// @@ Use of external package to run something that requires opening a terminal
+	//session
 	ptmx, err := pty.Start(cmd)
 	if err != nil {
 		log.Fatal(err)
@@ -36,7 +37,6 @@ func CreateTmux() {
 	if sc.Scan() {
 		fmt.Println(sc.Text())
 	}
-
 	if err := sc.Err(); err != nil {
 		log.Fatal(err)
 		return

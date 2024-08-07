@@ -3,7 +3,6 @@ package choices
 import "fmt"
 
 func CreateChoices() {
-
 	fmt.Println("You have few choices : ")
 	fmt.Println("1- Create a directory.")
 	fmt.Println("2- Delete a directory.")
