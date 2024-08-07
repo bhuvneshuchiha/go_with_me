@@ -37,7 +37,7 @@ func DeleteFile() {
 		return
 	}
 
-	//If directory exists, delete it.
+	//@@ If directory exists, delete it.
 	if info, err := os.Stat(absPath); err == nil && info.IsDir() {
 		fmt.Println("The file exists.")
 		fmt.Printf("Absolute path: %s\n", absPath)
