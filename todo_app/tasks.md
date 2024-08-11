@@ -15,3 +15,9 @@
 2-  When asked to fetch the todos, return the file content associated with their
     names.
 3-  Add id inside todos. Will help in update and remove a particular todo.
+
+# Points remaining --- V2
+1-  Prompt should start if the user wants to add todo, remove or update the todo.
+2-  IDs are not being stored correctly.
+3-  Issues in removing the todos.
+4-  Too many messages in the console.
