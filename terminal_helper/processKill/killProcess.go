@@ -17,7 +17,7 @@ func KillProcess() {
 		log.Fatal(err)
 	}
 
-	// fmt.Println(reflect.TypeOf(output))
+	// @@ fmt.Println(reflect.TypeOf(output))
 	fmt.Println(string(output))
 
 	fmt.Println("Enter the PID you wish to kill")
