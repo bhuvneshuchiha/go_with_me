@@ -57,5 +57,5 @@ func main() {
             break
         }
     }
-    todo_struct.PrintTodos()
+    todo_struct.UpdateStatus(1, "Check", "eeemboom")
 }
