@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"strconv"
 
 	fileOps "github.com/bhuvneshuchiha/todo_app/file_ops"
 	"github.com/bhuvneshuchiha/todo_app/models"
@@ -20,8 +21,9 @@ func CreateTodo(title string, con string) string {
 		log.Fatal("Params cannot be empty")
 		return "Could not create todo"
 	}
+
 	var t models.Todo
-    t.Id = i
+    t.Id = GetId()
 	t.Title = title
 	t.Content = con
 	t.Status = "false"
@@ -48,14 +50,13 @@ func CreateTodo(title string, con string) string {
     if err != nil {
         fmt.Println(err)
     }
-
-	i++
+    SaveId(i)
 	return "Successfully created Todo"
 }
 
 // Remove Todo
-func RemoveTodo(id uint8) string {
-    if id > uint8(len(todo_list)){
+func RemoveTodo(id int) string {
+    if id > len(todo_list){
         log.Fatal("Check ID")
         return "Couldnt remove"
     }
@@ -101,6 +102,29 @@ func PrintTodos() {
     }
 }
 
+// @@ Save the id so that the next time the program runs the ID can be
+    // continued
+func SaveId(id int) {
+    idData := strconv.Itoa(id)
+    err := os.WriteFile("id.txt", []byte(idData), 0644)
+    if err != nil {
+        fmt.Print(err)
+    }
+    fmt.Println("ID saved successfully")
+}
+
+// @@ Function to get id which is saved in the file
+func GetId() int {
+    data, err := os.ReadFile("id.txt")
+    if err != nil {
+        fmt.Println("Error while trying to read the file")
+    }
+    id, err := strconv.Atoi(string(data))
+    if err != nil {
+        fmt.Println("Caught an error while converting the id from str to int")
+    }
+    return id + 1
+}
 
 
 

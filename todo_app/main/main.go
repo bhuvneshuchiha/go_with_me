@@ -58,4 +58,5 @@ func main() {
         }
     }
     todo_struct.UpdateStatus(1, "Check", "eeemboom")
+    todo_struct.RemoveTodo(1)
 }
