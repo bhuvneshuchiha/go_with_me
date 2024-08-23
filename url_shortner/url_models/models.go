@@ -1,7 +1,7 @@
 package url_models
 
 type URL_STR struct {
-	url       string `json:"url_original"`
+	url       string
 	id        int
-	short_url string `json:"short_url"`
+	short_url string
 }
